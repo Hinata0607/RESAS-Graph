@@ -1,4 +1,5 @@
 import React from 'react';
+import { Graph } from './Graph';
 
 export const GraphSection = () => {
 	return (
@@ -7,6 +8,8 @@ export const GraphSection = () => {
 				width: '100%',
 				height: '1000px',
 			}}
-		></section>
+		>
+			<Graph />
+		</section>
 	);
 };
