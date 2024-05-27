@@ -1,4 +1,4 @@
-import React from 'react';
+'use client';
 import { HeaderTitle } from '../atom';
 
 export const Header = () => {
