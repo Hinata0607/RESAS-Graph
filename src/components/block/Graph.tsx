@@ -1,63 +1,75 @@
 'use client';
 import React from 'react';
+import { Line } from 'react-chartjs-2';
 import {
-	CartesianGrid,
-	Legend,
-	Line,
-	LineChart,
+	Chart as ChartJS,
+	CategoryScale,
+	LinearScale,
+	PointElement,
+	LineElement,
+	Title,
 	Tooltip,
-	XAxis,
-	YAxis,
-} from 'recharts';
+	Legend,
+} from 'chart.js';
+import { ChartOptions } from 'chart.js';
+import { useBreakpoint } from '@/hooks';
 
 export const Graph = () => {
-	const data = [
-		{ year: 1980, population: 500000, revenue: 100000 },
-		{ year: 1990, population: 1000000, revenue: 300000 },
-		{ year: 2000, population: 1500000, revenue: 600000 },
-		{ year: 2010, population: 2000000, revenue: 900000 },
-		{ year: 2020, population: 2500000, revenue: 1200000 },
-	];
+	const breakpoint = useBreakpoint();
+
+	ChartJS.register(
+		CategoryScale,
+		LinearScale,
+		PointElement,
+		LineElement,
+		Title,
+		Tooltip,
+		Legend
+	);
+
+	const data = {
+		labels: [1980, 1990, 2000, 2010, 2020],
+		datasets: [
+			{
+				label: 'Population',
+				data: [500000, 1000000, 1500000, 2000000, 2500000],
+				borderColor: '#8884d8',
+				backgroundColor: '#8884d8',
+				tension: 0.1,
+			},
+			{
+				label: 'Revenue',
+				data: [100000, 300000, 600000, 900000, 1200000],
+				borderColor: '#82ca9d',
+				backgroundColor: '#82ca9d',
+				tension: 0.1,
+			},
+		],
+	};
+
+	const options: ChartOptions<'line'> = {
+		responsive: true,
+		aspectRatio: ['xs', 'sm'].includes(breakpoint) ? 1 : 2,
+		maintainAspectRatio: true,
+		plugins: {
+			legend: {
+				position: 'top',
+			},
+			title: {
+				display: true,
+				text: 'Population and Revenue Over Time',
+			},
+		},
+	};
 
 	return (
-		<section
+		<div
 			style={{
-				display: 'flex',
-				justifyContent: 'center',
-				alignItems: 'center',
-				width: '100%',
-				padding: '50px',
+				margin: '0 auto',
+				width: '90%',
 			}}
 		>
-			<LineChart
-				width={800}
-				height={400}
-				data={data}
-				margin={{
-					top: 20,
-					right: 30,
-					left: 20,
-					bottom: 10,
-				}}
-			>
-				<CartesianGrid strokeDasharray="3 3" />
-				<XAxis dataKey="year" />
-				<YAxis />
-				<Tooltip />
-				<Legend />
-				<Line
-					type="monotone"
-					dataKey="population"
-					stroke="#8884d8"
-					activeDot={{ r: 8 }}
-				/>
-				<Line
-					type="monotone"
-					dataKey="revenue"
-					stroke="#82ca9d"
-					activeDot={{ r: 8 }}
-				/>
-			</LineChart>
-		</section>
+			<Line data={data} width="100%" height="100%" options={options} />
+		</div>
 	);
 };
