@@ -12,6 +12,8 @@ export const TopPage = ({ children }: TopPageProps) => {
 				display: isSm ? 'block' : 'grid',
 				gridTemplateColumns: isSm ? '' : '250px 1fr',
 				width: '100vw',
+				maxWidth: '2000px',
+				margin: '0 auto',
 			}}
 		>
 			{children}
