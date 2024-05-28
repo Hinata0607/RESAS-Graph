@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface PageProps {
+export interface TopPageProps {
 	children: ReactNode;
 }
