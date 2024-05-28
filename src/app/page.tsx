@@ -1,10 +1,10 @@
-import { CommandSection, GraphSection, TopPage } from '@/components';
+import { GraphSection, PrefectureSection, TopPage } from '@/components';
 
 export default function Home() {
 	return (
 		<>
 			<TopPage>
-				<CommandSection />
+				<PrefectureSection />
 				<GraphSection />
 			</TopPage>
 		</>

@@ -1,2 +1,2 @@
-export * from './CommandSection';
+export * from './PrefectureSection';
 export * from './GraphSection';
