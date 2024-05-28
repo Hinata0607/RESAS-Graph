@@ -67,6 +67,7 @@ export const Graph = () => {
 			style={{
 				margin: '0 auto',
 				width: '90%',
+				aspectRatio: ['xs', 'sm'].includes(breakpoint) ? '1/1' : '2/1',
 			}}
 		>
 			<Line data={data} width="100%" height="100%" options={options} />
