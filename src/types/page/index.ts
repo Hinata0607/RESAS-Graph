@@ -1,1 +1,1 @@
-export * from './PageProps';
+export * from './TopPageProps';

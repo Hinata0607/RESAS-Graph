@@ -1,8 +1,8 @@
 'use client';
 import { useBreakpoint } from '@/hooks';
-import { PageProps } from '@/types';
+import { TopPageProps } from '@/types';
 
-export const TopPage = ({ children }: PageProps) => {
+export const TopPage = ({ children }: TopPageProps) => {
 	const breakpoint = useBreakpoint();
 	const isSm = ['xs', 'sm'].includes(breakpoint);
 
