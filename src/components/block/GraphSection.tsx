@@ -6,7 +6,6 @@ export const GraphSection = () => {
 		<section
 			style={{
 				width: '100%',
-				height: '1000px',
 			}}
 		>
 			<Graph />
