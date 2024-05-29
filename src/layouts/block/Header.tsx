@@ -29,7 +29,7 @@ export const Header = () => {
 			<HeaderTitle />
 			<div
 				style={{
-					display: 'flex',
+					display: breakpoint === 'xs' ? 'none' : 'flex',
 					justifyContent: 'center',
 					alignItems: 'center',
 					gap: '15px',
