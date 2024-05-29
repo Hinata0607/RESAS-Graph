@@ -58,7 +58,7 @@ export const Graph = () => {
 				display: true,
 				text:
 					populations.length > 0
-						? `都道府県別 ${populations[0]?.data[graphType]?.label}`
+						? `都道府県別 ${populations[0]?.data[graphType]?.label} `
 						: '',
 			},
 		},
