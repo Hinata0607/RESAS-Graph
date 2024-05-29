@@ -15,6 +15,8 @@ export interface ProviderContextProps {
 			| PopulationProps[]
 			| ((prev: PopulationProps[]) => PopulationProps[])
 	) => void;
+	graphType: number;
+	setGraphType: (graphype: number) => void;
 }
 
 export interface ContextProviderProps {

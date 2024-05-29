@@ -15,6 +15,7 @@ export const ContextProvider = ({ children }: ContextProviderProps) => {
 		PrefectureProps[]
 	>([]);
 	const [populations, setPopulations] = useState<PopulationProps[]>([]);
+	const [graphType, setGraphType] = useState<number>(0);
 
 	const contextValue = {
 		prefectures,
@@ -23,6 +24,8 @@ export const ContextProvider = ({ children }: ContextProviderProps) => {
 		setSelectedPrefectures,
 		populations,
 		setPopulations,
+		graphType,
+		setGraphType,
 	};
 
 	return <Context.Provider value={contextValue}>{children}</Context.Provider>;
