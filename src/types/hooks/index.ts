@@ -1,1 +1,1 @@
-export * from './UseEnvProps';
+export * from './UsePrefecturesProps';
