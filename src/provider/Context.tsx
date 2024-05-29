@@ -1,6 +1,7 @@
 'use client';
 import {
 	ContextProviderProps,
+	PopulationProps,
 	PrefectureProps,
 	ProviderContextProps,
 } from '@/types';
@@ -13,12 +14,15 @@ export const ContextProvider = ({ children }: ContextProviderProps) => {
 	const [selectedPrefectures, setSelectedPrefectures] = useState<
 		PrefectureProps[]
 	>([]);
+	const [populations, setPopulations] = useState<PopulationProps[]>([]);
 
 	const contextValue = {
 		prefectures,
 		setPrefectures,
 		selectedPrefectures,
 		setSelectedPrefectures,
+		populations,
+		setPopulations,
 	};
 
 	return <Context.Provider value={contextValue}>{children}</Context.Provider>;

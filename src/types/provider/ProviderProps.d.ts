@@ -1,4 +1,4 @@
-import { PrefectureProps } from '../api';
+import { PopulationProps, PrefectureProps } from '../api';
 
 export interface ProviderContextProps {
 	prefectures: PrefectureProps[];
@@ -8,6 +8,12 @@ export interface ProviderContextProps {
 		selectedPrefectures:
 			| PrefectureProps[]
 			| ((prev: PrefectureProps[]) => PrefectureProps[])
+	) => void;
+	populations: PopulationProps[];
+	setPopulations: (
+		populations:
+			| PopulationProps[]
+			| ((prev: PopulationProps[]) => PopulationProps[])
 	) => void;
 }
 

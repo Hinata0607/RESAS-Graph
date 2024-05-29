@@ -1,7 +1,7 @@
 'use client';
 import { Context } from '@/provider/Context';
 import { PrefectureProps, UsePrefectureProps } from '@/types';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 export const usePrefectures = (): UsePrefectureProps => {
 	const context = useContext(Context);
@@ -13,17 +13,20 @@ export const usePrefectures = (): UsePrefectureProps => {
 		setPrefectures,
 		selectedPrefectures,
 		setSelectedPrefectures,
+		populations,
+		setPopulations,
 	} = context;
 
-	useEffect(() => {
-		console.log(selectedPrefectures);
-	}, [selectedPrefectures]);
-
 	const handlePrefectures = ({ prefCode, prefName }: PrefectureProps): void => {
-		console.log('call');
 		setSelectedPrefectures((prev: PrefectureProps[]) => {
 			const exists = prev.some((pref) => pref.prefCode === prefCode);
 			if (exists) {
+				// populations からも関連するデータを削除
+				const updatedPopulations = populations.filter(
+					(population) => population.prefName !== prefName
+				);
+				// setPopulations を更新
+				setPopulations(updatedPopulations);
 				return prev.filter((pref) => pref.prefCode !== prefCode);
 			} else {
 				return [...prev, { prefCode, prefName }];

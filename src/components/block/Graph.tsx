@@ -13,9 +13,12 @@ import {
 } from 'chart.js';
 import { ChartOptions } from 'chart.js';
 import { useBreakpoint } from '@/hooks';
+import { usePopulation } from '@/hooks/usePopulation';
 
 export const Graph = () => {
 	const breakpoint = useBreakpoint();
+	const { populations, labels, datasets } = usePopulation();
+	console.log(populations);
 
 	ChartJS.register(
 		CategoryScale,
@@ -28,23 +31,8 @@ export const Graph = () => {
 	);
 
 	const data = {
-		labels: [1980, 1990, 2000, 2010, 2020],
-		datasets: [
-			{
-				label: 'Population',
-				data: [500000, 1000000, 1500000, 2000000, 2500000],
-				borderColor: '#8884d8',
-				backgroundColor: '#8884d8',
-				tension: 0.1,
-			},
-			{
-				label: 'Revenue',
-				data: [100000, 300000, 600000, 900000, 1200000],
-				borderColor: '#82ca9d',
-				backgroundColor: '#82ca9d',
-				tension: 0.1,
-			},
-		],
+		labels: labels,
+		datasets: datasets(),
 	};
 
 	const options: ChartOptions<'line'> = {
