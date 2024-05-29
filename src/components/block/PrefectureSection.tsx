@@ -6,6 +6,7 @@ import axios, { AxiosResponse } from 'axios';
 import { useEffect } from 'react';
 import { PrefectureBox } from '../atom';
 import { usePopulation } from '@/hooks/usePopulation';
+import { useBreakpoint } from '@/hooks';
 
 export const PrefectureSection = () => {
 	const {
@@ -16,6 +17,8 @@ export const PrefectureSection = () => {
 	} = usePrefectures();
 
 	const { getPopulation } = usePopulation();
+	const breakpoint = useBreakpoint();
+	const isSm = ['xs', 'sm'].includes(breakpoint);
 
 	const getPrefecture = async () => {
 		const response: AxiosResponse<PrefectureResponse> = await axios.get(
@@ -39,11 +42,14 @@ export const PrefectureSection = () => {
 	return (
 		<section
 			style={{
-				width: '100%',
-				height: 'calc(100vh - 70px)',
+				display: isSm ? 'flex' : 'block',
+				flexWrap: 'wrap',
+				width: isSm ? 'fit-content' : '100%',
+				height: isSm ? 'fit-content' : 'calc(100vh - 70px)',
 				padding: '20px 0',
-				borderRight: 'solid 1px #aaa',
-				overflowY: 'scroll',
+				borderRight: isSm ? 'none' : 'solid 1px #aaa',
+				overflowY: isSm ? 'visible' : 'scroll',
+				backgroundColor: isSm ? '#eee' : 'transparent',
 			}}
 		>
 			{prefectures.map((prefecture, index) => (
