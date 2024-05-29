@@ -16,7 +16,8 @@ export const usePopulation = (): UsePopulationProps => {
 		throw new Error('Context is not provided');
 	}
 
-	const { populations, setPopulations, selectedPrefectures } = context;
+	const { populations, setPopulations, selectedPrefectures, graphType } =
+		context;
 
 	const getPopulation = async () => {
 		if (selectedPrefectures.length > 0) {
@@ -56,7 +57,7 @@ export const usePopulation = (): UsePopulationProps => {
 
 	const labels =
 		populations.length > 0
-			? populations[0].data[0].data.map((item) => item.year)
+			? populations[0].data[graphType].data.map((item) => item.year)
 			: [];
 
 	const datasets = (): DatasetProps[] => {
@@ -64,7 +65,7 @@ export const usePopulation = (): UsePopulationProps => {
 			const prefectureColor = prefectureColors[population.prefName];
 			return {
 				label: population.prefName,
-				data: population.data[0].data.map((item) => item.value),
+				data: population.data[graphType].data.map((item) => item.value),
 				borderColor: prefectureColor,
 				backgroundColor: prefectureColor,
 				tension: 0.1,
