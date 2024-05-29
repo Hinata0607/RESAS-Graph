@@ -57,7 +57,7 @@ export const usePopulation = (): UsePopulationProps => {
 
 	const labels =
 		populations.length > 0
-			? populations[0].data[graphType].data.map((item) => item.year)
+			? populations[0].data[0].data.map((item) => item.year)
 			: [];
 
 	const datasets = (): DatasetProps[] => {
