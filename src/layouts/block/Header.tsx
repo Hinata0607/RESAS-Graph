@@ -22,7 +22,9 @@ export const Header = () => {
 				justifyContent: isSm ? 'center' : ' space-between',
 				alignItems: 'center',
 				width: '100vw',
+				maxWidth: '2000px',
 				height: '70px',
+				margin: '0 auto',
 				borderBottom: 'solid 1px #aaa',
 			}}
 		>

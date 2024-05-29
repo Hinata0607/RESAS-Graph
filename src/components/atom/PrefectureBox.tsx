@@ -1,4 +1,5 @@
 'use client';
+import { useBreakpoint } from '@/hooks';
 import { Prefecture } from '@/types';
 import React from 'react';
 
@@ -18,6 +19,9 @@ export const PrefectureBox = ({
 		onClick;
 	};
 
+	const breakpoint = useBreakpoint();
+	const isSm = ['xs', 'sm'].includes(breakpoint);
+
 	return (
 		<div
 			style={{
@@ -25,10 +29,12 @@ export const PrefectureBox = ({
 				justifyContent: 'center',
 				alignItems: 'center',
 				gap: '10px',
-				width: '100%',
+				width: isSm ? '25%' : '100%',
+				minWidth: '33.3333%',
 				height: '40px',
 				padding: '0 10px',
 				cursor: 'pointer',
+				overflow: 'hidden',
 			}}
 			onClick={onClick}
 		>
