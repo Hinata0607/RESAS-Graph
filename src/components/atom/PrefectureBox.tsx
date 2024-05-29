@@ -14,8 +14,8 @@ export const PrefectureBox = ({
 	onClick,
 }: PrefectureBoxProps) => {
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		event.stopPropagation(); // チェックボックスのクリックイベントを伝搬させない
-		onClick; // 親のクリックイベントを手動で呼び出す
+		event.stopPropagation();
+		onClick;
 	};
 
 	return (

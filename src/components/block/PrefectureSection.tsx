@@ -5,6 +5,7 @@ import { Prefecture, PrefectureResponse } from '@/types';
 import axios, { AxiosResponse } from 'axios';
 import { useEffect } from 'react';
 import { PrefectureBox } from '../atom';
+import { usePopulation } from '@/hooks/usePopulation';
 
 export const PrefectureSection = () => {
 	const {
@@ -13,6 +14,8 @@ export const PrefectureSection = () => {
 		setPrefectures,
 		selectedPrefectures,
 	} = usePrefectures();
+
+	const { getPopulation } = usePopulation();
 
 	const getPrefecture = async () => {
 		const response: AxiosResponse<PrefectureResponse> = await axios.get(
@@ -28,6 +31,10 @@ export const PrefectureSection = () => {
 	useEffect(() => {
 		getPrefecture();
 	}, []);
+
+	useEffect(() => {
+		getPopulation();
+	}, [selectedPrefectures]);
 
 	return (
 		<section
