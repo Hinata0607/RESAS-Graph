@@ -26,8 +26,8 @@
     "node_modules",
     "out",
     ".next",
+    "src/hooks/__mock__",
     "**/*.test.ts",
-    "**/*.test.tsx",
-    "src/hooks/__mock__"
+    "**/*.test.tsx"
   ]
 }
