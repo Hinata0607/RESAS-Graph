@@ -14,11 +14,22 @@ import {
 import { ChartOptions } from 'chart.js';
 import { useBreakpoint } from '@/hooks';
 import { usePopulation } from '@/hooks/usePopulation';
+import { useGraphType } from '@/hooks/useGraphType';
 
 export const Graph = () => {
 	const breakpoint = useBreakpoint();
 	const { populations, labels, datasets } = usePopulation();
-	console.log(populations);
+	const { graphType } = useGraphType();
+
+	const dummyData = [
+		{
+			label: '',
+			data: [],
+			borderColor: 'transparent',
+			backgroundColor: 'transparent',
+			tension: 0.1,
+		},
+	];
 
 	ChartJS.register(
 		CategoryScale,
@@ -32,7 +43,7 @@ export const Graph = () => {
 
 	const data = {
 		labels: labels,
-		datasets: datasets(),
+		datasets: datasets().length > 0 ? datasets() : dummyData,
 	};
 
 	const options: ChartOptions<'line'> = {
@@ -45,7 +56,24 @@ export const Graph = () => {
 			},
 			title: {
 				display: true,
-				text: 'Population and Revenue Over Time',
+				text:
+					populations.length > 0
+						? `都道府県別 ${populations[0]?.data[graphType]?.label} `
+						: '',
+			},
+		},
+		scales: {
+			x: {
+				title: {
+					display: true,
+					text: '人口数',
+				},
+			},
+			y: {
+				title: {
+					display: true,
+					text: '年度',
+				},
 			},
 		},
 	};
