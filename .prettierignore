@@ -2,6 +2,7 @@
 node_modules
 .next
 .husky
+__tests__
 out
 public
 .prettierrc.json
