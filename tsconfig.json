@@ -23,10 +23,10 @@
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "__tests__/hooks/usePrefecture.test.js", "jest.config.js", "jest.config.js", "src/hooks/__mock__/usePrefectureData.js", "__tests__/sample.test.js"],
   "exclude": [
-    "src/hooks/__mock__",
     "node_modules",
     "out",
     ".next",
+    "src/hooks/__mock__",
     "**/*.test.ts",
     "**/*.test.tsx"
   ]

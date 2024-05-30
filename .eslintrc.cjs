@@ -19,9 +19,9 @@ module.exports = {
 	  'react/no-unescaped-entities': 'off',
 	},
 	ignorePatterns: [
+	"src/hooks/__mock__/**/*", // Ignore mock directory
 	  "/lib/**/*", // Ignore built files.
 	  "**/*.js",
-	  "src/hooks/__mock__/**/*", // Ignore mock directory
 	],
   };
   
