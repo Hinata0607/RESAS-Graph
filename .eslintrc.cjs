@@ -18,4 +18,8 @@ module.exports = {
 		'@typescript-eslint/no-unsafe-return': 'error',
 		'react/no-unescaped-entities': 'off',
 	},
+	ignorePatterns: [
+		"/lib/**/*", // Ignore built files.
+		"**/*.js",
+	],
 };
