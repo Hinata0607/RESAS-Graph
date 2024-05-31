@@ -21,9 +21,8 @@ export const PrefectureSection = () => {
 	const isSm = ['xs', 'sm'].includes(breakpoint);
 
 	const getPrefecture = async () => {
-		const response: AxiosResponse<PrefectureResponse> = await axios.get(
-			`${process.env.NEXT_PUBLIC_CLIENT_BASE_URL}/api/prefectures`
-		);
+		const response: AxiosResponse<PrefectureResponse> =
+			await axios.get(`/api/prefectures`);
 		setPrefectures(response.data.result);
 	};
 
