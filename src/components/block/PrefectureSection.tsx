@@ -22,7 +22,7 @@ export const PrefectureSection = () => {
 
 	const getPrefecture = async () => {
 		const response: AxiosResponse<PrefectureResponse> = await axios.get(
-			'http://localhost:3000/api/prefectures'
+			`${process.env.NEXT_PUBLIC_CLIENT_BASE_URL}/api/prefectures`
 		);
 		setPrefectures(response.data.result);
 	};

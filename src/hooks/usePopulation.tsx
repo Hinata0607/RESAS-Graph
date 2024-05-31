@@ -38,7 +38,7 @@ export const usePopulation = (): UsePopulationProps => {
 			// 削除された都道府県がpopulationsに存在しない場合のみAPIを呼び出してデータを更新
 			if (!isRemovedPrefectureExist) {
 				const response: AxiosResponse<PopulationResponse> = await axios.get(
-					`http://localhost:3000/api/population?prefCode=${seletedPrefCode}`
+					`${process.env.NEXT_PUBLIC_CLIENT_BASE_URL}/api/population?prefCode=${seletedPrefCode}`
 				);
 
 				// 都道府県名を取得
